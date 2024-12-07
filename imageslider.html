@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<head>
+    <title>Images</title>
+    <style>
+      *{/*for all elements*/
+         padding:0;
+         margin:0;
+         box-sizing:border-box;
+         }
+         h1{
+            text-align: center;
+            color:red;
+            margin-bottom: 20px;
+         }
+         #sliderimg{
+            display:block;
+            width:600px;
+            border-radius:10px;
+            margin:20px;
+            transition: opacity 0.5s ease-in-out;/*image changes*/
+         }
+         button{
+            position: absolute;/*top left*/
+            top:50%;
+            transform: translateY(-50%);
+            background-color: blue;
+            color:white;
+            border:none;
+            padding:10px 20px;/*top & left*/
+            font-size:16px;
+            cursor:pointer;/*hand symbol show*/
+            border-radius:5px;
+            transition:background-color 0.3s ease;/*hover effect*/
+            z-index:2;/*no space full width take*/
+         }
+         #pbtn{
+            left:10px;
+         }
+         #nbtn{
+          right:50%;
+         }
+         button:hover{
+            background-color: chartreuse;
+         }
+        
+          
+           
+
+     
+
+    </style>
+
+    
+</head>
+<body>
+   <h1>Image Slider</h1>
+   <img id="sliderimg" src="images/3.jpg" alt="Img">
+   <button id="pbtn">Previous</button>
+   <button id="nbtn">Next</button>
+      
+   
+
+    <script>
+         const images=["images/3.jpg","images/oil1.jpg","images/oil2.jpg","images/oil3.jpg","images/salt.5jpg.jpg","images/atta.jpg","images/butter.jpg"];
+         
+         let i=0;//initial index value start 0
+
+         const slideimage=document.getElementById("sliderimg");
+         const pbtn=document.getElementById("pbtn");
+         const nbtn=document.getElementById("nbtn");           
+
+         function updateImage(){
+            slideimage.src=images[i];  //initial index value 0 to start    
+         }
+         pbtn.addEventListener("click",()=>{     //its taken two parameters one event,next one function
+            i=(i-1+images.length)% images.length; //(backword)currentindex=0-1=>-1 array length=images.length=>-1+4=3%4
+            updateImage()
+         });
+         nbtn.addEventListener("click",()=>{
+            i=(i+1)% images.length;//forward current index=0+1 array images length(images.length)
+            updateImage()
+         });
+        
+
+
+    </script>
+</body>
+</html>
